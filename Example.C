@@ -1,12 +1,24 @@
-*/
+/*
 
 #ifdef __CLING__
 R__LOAD_LIBRARY(libDelphes)
 #include "classes/DelphesClasses.h"
 #include "external/ExRootAnalysis/ExRootTreeReader.h"
 #endif
+*/
+//change to podio/edm4hep
 
-//------------------------------------------------------------------------------
+#include "edm4hep/ReconstructedParticleCollection.h"
+#include "edm4hep/utils/kinematics.h"
+
+#include "podio/Frame.h"
+#include "podio/ROOTFrameReader.h"
+
+#include "TFile.h"
+#include "TH1D.h"
+
+#include <string>
+#include <vector>
 
 void Example1(const char *inputFile)
 {
