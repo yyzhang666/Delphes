@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-void Example1(const char *inputFile)
+void Example1()
 {
   //gSystem->Load("libDelphes");
 
@@ -26,6 +26,7 @@ void Example1(const char *inputFile)
   //TClonesArray *branchJet = treeReader->UseBranch("Jet");
   //TClonesArray *branchElectron = treeReader->UseBranch("Electron");
   //TClonesArray *branchEvent = treeReader->UseBranch("Event");
+  const std::vector<std::string> inputFile={"Delphes_events_edm4hep.root"}
 
   auto reader = podio::ROOTFrameReader();
   reader.openFiles(inputFile);
@@ -87,18 +88,25 @@ void Example1(const char *inputFile)
       histJetPT->Fill(jet_pt.Pt());
 
       // Print jet transverse momentum
-      cout << "Jet pt: "<<jet_pt.Pt() << endl;
+      std::cout << "Jet pt: "<<jet_pt.Pt() << std::endl;
     }
 
     //Electron *elec1, *elec2;
-
+    const auto &electrons =
+        event.get<edm4hep::ReconstructedParticleCollection>("Electrons");
     // If event contains at least 2 electrons
     //if(branchElectron->GetEntries() > 1)
     //{
     //  // Take first two electrons
     //  elec1 = (Electron *) branchElectron->At(0);
     //  elec2 = (Electron *) branchElectron->At(1);
+      if (electrons.size()>2){
+        const auto e1 = edm4hep::utils::p4(electrons[0]);
+        const auto e2 = edm4hep::utils::p4(electrons[1]);
 
+        const auto e_p4 = e1 + e2;
+        histMass->Fill(z_p4.M());
+      }
       // Plot their invariant mass
     //  histMass->Fill(((elec1->P4()) + (elec2->P4())).M());
     //}
@@ -106,5 +114,5 @@ void Example1(const char *inputFile)
 
   // Show resulting histograms
   histJetPT->Draw();
-  //histMass->Draw();
+  histMass->Draw();
 }
