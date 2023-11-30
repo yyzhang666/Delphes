@@ -26,7 +26,7 @@ void Example1()
   //TClonesArray *branchJet = treeReader->UseBranch("Jet");
   //TClonesArray *branchElectron = treeReader->UseBranch("Electron");
   //TClonesArray *branchEvent = treeReader->UseBranch("Event");
-  const std::vector<std::string> inputFile={"Delphes_events_edm4hep.root"}
+  const std::vector<std::string> inputFile={"delphes_events_edm4hep.root"};
 
   auto reader = podio::ROOTFrameReader();
   reader.openFiles(inputFile);
@@ -82,7 +82,7 @@ void Example1()
         event.get<edm4hep::ReconstructedParticleCollection>("Jet");
     if(jets.size() > 0)
     {
-      auto jet_pt=edm4hep::utils::p4(jets[0])
+      auto jet_pt=edm4hep::utils::p4(jets[0]);
 
       // Plot jet transverse momentum
       histJetPT->Fill(jet_pt.Pt());
@@ -105,7 +105,7 @@ void Example1()
         const auto e2 = edm4hep::utils::p4(electrons[1]);
 
         const auto e_p4 = e1 + e2;
-        histMass->Fill(z_p4.M());
+        histMass->Fill(e_p4.M());
       }
       // Plot their invariant mass
     //  histMass->Fill(((elec1->P4()) + (elec2->P4())).M());
