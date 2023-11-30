@@ -105,7 +105,7 @@ void Example1()
         const auto e2 = edm4hep::utils::p4(electrons[1]);
 
         const auto e_p4 = e1 + e2;
-        histMass->Fill(z_p4.M());
+        histMass->Fill(e_p4.M());
       }
       // Plot their invariant mass
     //  histMass->Fill(((elec1->P4()) + (elec2->P4())).M());
