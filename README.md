@@ -13,12 +13,14 @@ DelphesSTDHEP_EDM4HEP ${DELPHES_DIR}/cards/delphes_card_IDEA.tcl \
                       edm4hep_output.root \
                       input_file.stdhep
  ```
-Note that there are other excutable commond in Delphes. We don't need do PYTHIA8 since WHIZARD had done that.
+Note that there are [other excutable commond](https://key4hep.github.io/key4hep-doc/tutorials/k4simdelphes/doc/starterkit/k4SimDelphes/Readme.html) in Delphes. We don't need do PYTHIA8 since WHIZARD had done that.
 
-DelphesSTDHEP_EDM4HEP - for reading STDHEP inputs
-DelphesROOT_EDM4HEP - for reading ROOT files in the Delphes format
-DelphesPythia8_EDM4HEP - for running Pythia8 as part of the simulation
+*`DelphesSTDHEP_EDM4HEP` - for reading STDHEP inputs
+*`DelphesROOT_EDM4HEP` - for reading ROOT files in the Delphes format
+*`DelphesPythia8_EDM4HEP` - for running Pythia8 as part of the simulation
 
-Here are example macro files for analysis. Note that these files assumes the data with a different structure.
+E.g. command `DelphesSTDHEP_EDM4HEP -h` to know the arguments in it.
+
 # Edm4hep analysis
+Here are example macro files for analysis. Note that these files assumes the data with a different structure.
 Example file
