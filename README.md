@@ -21,6 +21,8 @@ DelphesSTDHEP_EDM4HEP ${DELPHES_DIR}/cards/delphes_card_IDEA.tcl \
                       edm4hep_output.root \
                       input_file.stdhep
  ```
+The result data configuration is shown [here](https://github.com/key4hep/k4SimDelphes/blob/main/doc/output_config.md#known-issues).
+
 Note that there are [other excutable commond](https://key4hep.github.io/key4hep-doc/tutorials/k4simdelphes/doc/starterkit/k4SimDelphes/Readme.html) in Delphes. We don't need do PYTHIA8 since WHIZARD had done that.
 
 * `DelphesSTDHEP_EDM4HEP` - for reading STDHEP inputs
