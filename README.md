@@ -10,6 +10,7 @@ To run the fast simulation in Delphes, change the output file format in ".sin" f
 Finished editing the ".sin" file, run command
 ```
 whizard input_name.sin
+```
 ## The .sin code structure
 * model
   ```
