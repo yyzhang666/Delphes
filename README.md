@@ -6,6 +6,10 @@ source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh
 # Event generator: Whizard
 The [WHIZARD manual website](https://whizard.hepforge.org/manual/index.html).
 To run the fast simulation in Delphes, change the output file format in ".sin" file into "stdhep", then we will get an events file with name ".hep".
+
+Finished editing the ".sin" file, run command
+```
+whizard input_name.sin
 ## The .sin code structure
 * model
   ```
