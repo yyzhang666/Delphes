@@ -14,9 +14,9 @@ To run the fast simulation in Delphes, change the output file format in ".sin" f
   where the avaliable "model name" can be found in [10.1.2](https://whizard.hepforge.org/manual/manual011.html#tab%3Amodels).
 * process 
 # Fast detector simulation: Delphes
-Converting the stdhep file to edm4hep and run the Delphes simulation.
+Converting the stdhep file to edm4hep and run the Delphes simulation. For the ILC environment studies, we choose the "ILCgen" card,
 ```
-DelphesSTDHEP_EDM4HEP ${DELPHES_DIR}/cards/delphes_card_IDEA.tcl \
+DelphesSTDHEP_EDM4HEP ${DELPHES_DIR}/cards/delphes_card_ILCgen.tcl \
                       ${K4SIMDELPHES}/edm4hep_output_config.tcl \
                       edm4hep_output.root \
                       input_file.stdhep
