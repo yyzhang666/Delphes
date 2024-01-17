@@ -18,7 +18,7 @@
 #include <vector>
 #include<iostream>
 
-int main(){
+void zh_mumu_angle(){
     //Read files
     auto reader = podio::ROOTFrameReader();
     reader.openFile("delphes_events_edm4hep.root");
