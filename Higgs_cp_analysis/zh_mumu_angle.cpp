@@ -61,5 +61,8 @@ int main(){
                     std::cout<<"No muons in this event!"<<std::endl;
                 }
     }
+	auto hist_file = new TFile("higgs_mu_azimuthal.root", "recreate");
+  azimuthal->Write();
+  hist_file->Close();
 }               
         
