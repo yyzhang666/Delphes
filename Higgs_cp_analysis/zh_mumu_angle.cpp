@@ -27,7 +27,13 @@ int main(){
 
     //book histograms
     auto azimuthal= new TH1D("azimuthal_angle","Phi/rad",100, 0.0, 100.0);
-    
+
+    //Define 3d vector
+    struct Vector3D {
+    double x, y, z;
+    Vector3D(double x, double y, double z) : x(x), y(y), z(z) {}
+	};
+
 
     //loop over events
     for (size_t i = 0; i < reader.getEntries("events"); ++i) {
@@ -51,9 +57,9 @@ int main(){
                 TVector3 boostZ=-TZ_boson.BoostVector();
                 Tmu1.Boost(boostZ);
 
-                edm4hep::Vector3D auto p_mu1(Tmu1.Px(),Tmu1.Py(),Tmu1.Pz());
+                Vector3D p_mu1(Tmu1.Px(),Tmu1.Py(),Tmu1.Pz());
 
-                const auto angle=edm4hep::utils::angleBPolar(p_mu1);
+                const auto angle=edm4hep::utils::anglePolar(p_mu1);
                 azimuthal->Fill(angle);
 
                         }
