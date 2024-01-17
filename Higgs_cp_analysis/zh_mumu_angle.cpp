@@ -21,7 +21,7 @@
 int main(){
     //Read files
     auto reader = podio::ROOTFrameReader();
-    reader.openFile("higgs_recoil_mumubb.root");
+    reader.openFile("delphes_events_edm4hep.root");
 
     const auto e_cms = edm4hep::LorentzVectorE(0, 0, 0, 250.);
 
@@ -45,15 +45,15 @@ int main(){
                 //so it can be acted on the same method.
 
                 //Change the format to TLorentzVector for transforming the reference
-                TLorentzVector TZ_boson(Z_boson.Px(),Z_boson.Py().Z_boson.Pz(),Z_boson.E());
+                TLorentzVector TZ_boson(Z_boson.Px(),Z_boson.Py(),Z_boson.Pz(),Z_boson.E());
                 TLorentzVector Tmu1(mu1.Px(),mu1.Py(),mu1.Pz(),mu1.E());
 
                 TVector3 boostZ=-TZ_boson.BoostVector();
                 Tmu1.Boost(boostZ);
 
-                edm4hep::Vector3D p_mu1(Tmu1.Px(),Tmu1.Py(),Tmu1.Pz());//检查一下这个怎么赋值的
+                edm4hep::Vector3D auto p_mu1(Tmu1.Px(),Tmu1.Py(),Tmu1.Pz());
 
-                angle=edm4hep::utils::angleBPolar(p_mu1);
+                const auto angle=edm4hep::utils::angleBPolar(p_mu1);
                 azimuthal->Fill(angle);
 
                         }
