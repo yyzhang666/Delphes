@@ -100,7 +100,7 @@ void Example1()
     //  // Take first two electrons
     //  elec1 = (Electron *) branchElectron->At(0);
     //  elec2 = (Electron *) branchElectron->At(1);
-      if (electrons.size()>2){
+      if (electrons.size()>1){
         const auto e1 = edm4hep::utils::p4(electrons[0]);
         const auto e2 = edm4hep::utils::p4(electrons[1]);
 
