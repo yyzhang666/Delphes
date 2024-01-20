@@ -63,7 +63,7 @@ void zh_mumubb_angle(){
                 if (jets.size()>0){
 			//loop over jets with btag
                     for (const auto &jet:jets){
-                        if (jet.BTag&1==1){
+                        if (jet.BTag&1()==1){
                             const auto b=edm4hep::utils::p4(jet);
                             TLorentzVector Tb(b.Px(),b.Py(),b.Pz(),b.E()); 
 			    //boost b-quark to Higgs rest frame
@@ -71,7 +71,7 @@ void zh_mumubb_angle(){
                             Vector3D p_b(Tb.Px(),Tb.Py(),Tb.Pz());
 
 			    //The angle between mu in Z and b in Higgs is the azimuthal angle
-                            angle=edm4hep::utils::angleBetween(p_mu1,p_b);
+                            const auto angle=edm4hep::utils::angleBetween(p_mu1,p_b);
 
                             azimuthal->Fill(angle);
 
