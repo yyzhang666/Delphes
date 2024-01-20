@@ -39,7 +39,7 @@ void zh_mumu_angle(){
     for (size_t i = 0; i < reader.getEntries("events"); ++i) {
                auto event = podio::Frame(reader.readNextEntry("events"));
                    const auto &muons =
-        event.get<edm4hep::ReconstructedParticleCollection>("Muons");
+        event.get<edm4hep::ReconstructedParticleCollection>("Muon");
 			if (muons.size()==2){
                 const auto mu1 = edm4hep::utils::p4(muons[0]);
                 const auto mu2 = edm4hep::utils::p4(muons[1]);
