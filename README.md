@@ -46,8 +46,11 @@ Note that there are [other excutable commond](https://key4hep.github.io/key4hep-
 E.g. command `DelphesSTDHEP_EDM4HEP -h` to know the arguments in it.
 
 We eventually get a '.root' file.
+
+# Full simulation
+
 # Edm4hep analysis
-To inspect the root file within the command line, run this command
+To inspect the root file with the edm4hep data within the command line, run this command
 ```
 podio-dump -h
 ```
@@ -60,6 +63,20 @@ on the terminal and run
 t = new TBrowser
 ```
 in root to see a graphic interface of the TTree.
+
+* Note the old LCIO
 ## Analysis macros
-Here are example macro files for analysis. Note that these files assumes the data with a different structure.
-Example file
+The C++ macros for edm4hep analysis should include following head files
+```
+\\The collection of all kinds of reconstructed particles
+#include "edm4hep/ReconstructedParticleCollection.h"
+\\The functions to accsess the knematic variables of the particles
+#include "edm4hep/utils/kinematics.h"
+\\Functions and conceptions of the vector operation
+#include "edm4hep/utils/vector_utils.h"
+
+\\edm4hep data should be translated by podio
+#include "podio/Frame.h"
+#include "podio/ROOTFrameReader.h"
+```
+
