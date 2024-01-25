@@ -2,17 +2,17 @@
 ```
 source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh
 ```
-*This environment includes: root, whizard, Delphes, edm4hep, podio...
-*This environment not includes: Delphes2LCIO
+* This environment includes: root, whizard, Delphes, edm4hep, podio...
+* This environment not includes: Delphes2LCIO
 
 # Event generator: Whizard
 The [WHIZARD manual website](https://whizard.hepforge.org/manual/index.html).
 The steering file of Whizard is file with format ".sin", according to the intended events and following detector simulation, we mainly need modify:
-*beam
-*process
-*output format
-*model
-*...
+* beam
+* process
+* output format
+* model
+* ...
 
 Finishing editing the ".sin" file, run command
 ```
