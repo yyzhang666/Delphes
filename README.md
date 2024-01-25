@@ -5,6 +5,8 @@ source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh
 * This environment includes: root, whizard, Delphes, edm4hep, podio...
 * This environment not includes: Delphes2LCIO
 
+The [key4hep tutorial](https://github.com/key4hep/key4hep-tutorials)
+
 # Event generator: Whizard
 The [WHIZARD manual website](https://whizard.hepforge.org/manual/index.html).
 The steering file of Whizard is file with format ".sin", according to the intended events and following detector simulation, we mainly need modify:
@@ -45,11 +47,12 @@ Note that there are [other excutable commond](https://key4hep.github.io/key4hep-
 
 E.g. command `DelphesSTDHEP_EDM4HEP -h` to know the arguments in it.
 
-We eventually get a '.root' file.
+We eventually get a '.root' file. The root [TTree description of Delphes](https://cp3.irmp.ucl.ac.be/projects/delphes/wiki/WorkBook/RootTreeDescription)
 
 # Full simulation
 
 # Edm4hep analysis
+The namespace and construction of edm4hep is [here](https://edm4hep.web.cern.ch)
 To inspect the root file with the edm4hep data within the command line, run this command
 ```
 podio-dump -h
@@ -79,4 +82,6 @@ The C++ macros for edm4hep analysis should include following head files
 #include "podio/Frame.h"
 #include "podio/ROOTFrameReader.h"
 ```
+The name of the kinetic functions and vector operations can be found [here](https://github.com/key4hep/EDM4hep/tree/main/utils/include/edm4hep/utils)
+
 
