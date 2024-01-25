@@ -2,12 +2,19 @@
 ```
 source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh
 ```
+*This environment includes: root, whizard, Delphes, edm4hep, podio...
+*This environment not includes: Delphes2LCIO
 
 # Event generator: Whizard
 The [WHIZARD manual website](https://whizard.hepforge.org/manual/index.html).
-To run the fast simulation in Delphes, change the output file format in ".sin" file into "stdhep", then we will get an events file with name ".hep".
+The steering file of Whizard is file with format ".sin", according to the intended events and following detector simulation, we mainly need modify:
+*beam
+*process
+*output format
+*model
+*...
 
-Finished editing the ".sin" file, run command
+Finishing editing the ".sin" file, run command
 ```
 whizard input_name.sin
 ```
@@ -19,6 +26,8 @@ whizard input_name.sin
   where the avaliable "model name" can be found in [10.1.2](https://whizard.hepforge.org/manual/manual011.html#tab%3Amodels).
 * process 
 # Fast detector simulation: Delphes
+To run the fast simulation in Delphes, the output file format in steering file of WHIZARD should be "stdhep", then we will get an events file with name ".hep".
+
 Converting the stdhep file to edm4hep and run the Delphes simulation. For the ILC environment studies, we choose the "ILCgen" card,
 ```
 DelphesSTDHEP_EDM4HEP ${DELPHES_DIR}/cards/delphes_card_ILCgen.tcl \
@@ -36,8 +45,13 @@ Note that there are [other excutable commond](https://key4hep.github.io/key4hep-
 
 E.g. command `DelphesSTDHEP_EDM4HEP -h` to know the arguments in it.
 
+We eventually get a '.root' file.
 # Edm4hep analysis
-After getting the '.root' file from the last step, run this command
+To inspect the root file within the command line, run this command
+```
+podio-dump -h
+```
+To analysis in the root, run 
 ```
 root -l input_edm4hep.root 
 ```
