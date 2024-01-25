@@ -3,7 +3,7 @@
 source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh
 ```
 * This environment includes: root, whizard, Delphes, edm4hep, podio...
-* This environment not includes: Delphes2LCIO
+* This environment does not include: Delphes2LCIO
 
 The [key4hep tutorial](https://github.com/key4hep/key4hep-tutorials)
 
