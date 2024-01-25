@@ -52,7 +52,8 @@ We eventually get a '.root' file. The root [TTree description of Delphes](https:
 # Full simulation
 
 # Edm4hep analysis
-The namespace and construction of edm4hep is [here](https://edm4hep.web.cern.ch)
+The namespace and construction of edm4hep is [here](https://edm4hep.web.cern.ch).
+
 To inspect the root file with the edm4hep data within the command line, run this command
 ```
 podio-dump -h
