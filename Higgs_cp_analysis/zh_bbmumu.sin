@@ -9,7 +9,15 @@ $isr_handler_mode = "recoil"
 isr_mass = 0.000511
 isr_alpha = 0.0072993
 
-process zh_bbmumu    =   e1,E1 => (e2,E2,b,B) { $omega_flags =  "-model:constant_width" }
+alias jet=b:B
+
+process zh_bbmumu    =   e1,E1 => (e2,E2,jet) { $omega_flags =  "-model:constant_width" }
+
+!jet_algorithm = antikt_algorithm
+!jet_r = 0.7
+!cuts = all Pt > 15 GeV [cluster if Pt > 5 GeV [colored]]
+!cluster if
+
 
 
 sqrts = 250 GeV
@@ -53,9 +61,8 @@ $circe2_file="250_SetA_ee024.circe"
 $shower_method = "PYTHIA6"
 ?hadronization_active = true
 
-
-sample_format = stdhep
-
 n_events = 10000
+sample_format = stdhep
+$extension_stdhep="stdhep"
 
-simulate  ( zh_bbmumu  )
+simulate  ( zh_bbmumu  ){checkpoint=100}
