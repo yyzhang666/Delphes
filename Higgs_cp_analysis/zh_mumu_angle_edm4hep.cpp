@@ -6,9 +6,6 @@
 #include "podio/Frame.h"
 #include "podio/ROOTFrameReader.h"
 
-//include Delphes package to get information of btag
-#include "classes/DelphesClasses.h"
-
 #include "TFile.h"
 #include "TH1D.h"
 #include "TLorentzVector.h"
@@ -18,15 +15,22 @@
 #include <vector>
 #include<iostream>
 
-void zh_mumu_angle(){
+void zh_mumu_angle(int arg, char* argv[]){
+	if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <filename>\n";
+        return 1;
+    }
+
+
     //Read files
     auto reader = podio::ROOTFrameReader();
-    reader.openFile("delphes_events_edm4hep.root");
+     reader.openFile(argv[1];
 
     const auto e_cms = edm4hep::LorentzVectorE(0, 0, 0, 250.);
 
     //book histograms
     auto azimuthal= new TH1D("azimuthal_angle","Phi/rad",100, 0.0, 3.2);
+	auto pz= new TH1D("mu_Pz_Zrest","Pz",100,0.0,100);
 
     //Define 3d vector
     struct Vector3D {
@@ -52,15 +56,24 @@ void zh_mumu_angle(){
 
                 //Change the format to TLorentzVector for transforming the reference
                 TLorentzVector TZ_boson(Z_boson.Px(),Z_boson.Py(),Z_boson.Pz(),Z_boson.E());
+		TLorentzVector TH_boson(H_boson.Px(),H_boson.Py(),H_boson.Pz(),H_boson.E());
                 TLorentzVector Tmu1(mu1.Px(),mu1.Py(),mu1.Pz(),mu1.E());
+		TLorentzVector Te(e_cms.Px(),e_cms.Py(),e_cms.Pz(),e_cms.E())
 
                 TVector3 boostZ=-TZ_boson.BoostVector();
+		TVector3 boostH=-TH_boson.BoostVector();
                 Tmu1.Boost(boostZ);
+		Te.Boost(boostH);
+		
 
                 Vector3D p_mu1(Tmu1.Px(),Tmu1.Py(),Tmu1.Pz());
+		Vector3D p_e(Te.Px(),Te.Py(),Te.Pz());
 
-                const auto angle=edm4hep::utils::anglePolar(p_mu1);
+                const auto angle_mu=edm4hep::utils::angleAzimuthal(p_mu1);
+		const auto angle_e=edm4hep::utils::angleAzimuthal(p_e);
+		const auto angle=angle_mu-angle_e;
                 azimuthal->Fill(angle);
+		pz->Fill(Tmu1.Pz());
 
                         }
                 else {
@@ -68,7 +81,12 @@ void zh_mumu_angle(){
                 }
     }
 	auto hist_file = new TFile("higgs_mu_azimuthal.root", "recreate");
-  azimuthal->Write();
-  hist_file->Close();
-}               
+	azimuthal->Write();
+	hist_file->Close();
+	auto hist_file_2 = new TFile("mu_Pz_Zrest.root", "recreate");
+	pz->Write();
+	hist_file_2 ->Close();
+  
+                
+}
         
