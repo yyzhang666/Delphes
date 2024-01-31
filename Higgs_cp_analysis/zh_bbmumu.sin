@@ -9,9 +9,7 @@ $isr_handler_mode = "recoil"
 isr_mass = 0.000511
 isr_alpha = 0.0072993
 
-alias jet=b:B
-
-process zh_bbmumu    =   e1,E1 => (e2,E2,jet) { $omega_flags =  "-model:constant_width" }
+process zh_bbmumu    =   e1,E1 => e2,E2,b,B {$restrictions = "1+2 ~ Z" && "3+4 ~ Z" && "5+6 ~ Z"} { $omega_flags =  "-model:constant_width" }
 
 !jet_algorithm = antikt_algorithm
 !jet_r = 0.7
@@ -24,8 +22,8 @@ sqrts = 250 GeV
 
 # Set the input parameters
 # Would-be 115 GeV Higgs at LEP
-mH = 125 GeV
-wH = 3.228 MeV
+!mH = 125 GeV
+!wH = 3.228 MeV
 # Running b mass
 !mb = 2.9 GeV
 !me = 0
@@ -58,15 +56,15 @@ $circe2_file="250_SetA_ee024.circe"
 ?keep_beams = true
 
 ?ps_fsr_active = true
-?ps_isr_active		= false
+?ps_isr_active = false
 $shower_method = "PYTHIA6"
 ?hadronization_active = true
 !?ps_PYTHIA_verbose	= true
 
-!integrate (zh_bbmumu) {iterations = 10:1000000:"gw", 5:500000:""}
+integrate (zh_bbmumu) {iterations = 10:1000000:"gw", 5:500000:""}
 
 n_events = 10000
 sample_format = stdhep
 $extension_stdhep="stdhep"
 
-simulate  ( zh_bbmumu  ){checkpoint=100}
+simulate  ( zh_bbmumu  )
