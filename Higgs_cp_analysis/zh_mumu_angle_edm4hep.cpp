@@ -15,16 +15,16 @@
 #include <vector>
 #include<iostream>
 
-void zh_mumu_angle(int arg, char* argv[]){
+void zh_mumu_angle(int argc, char* argv[]){
 	if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <filename>\n";
-        return 1;
+        return ;
     }
 
 
     //Read files
     auto reader = podio::ROOTFrameReader();
-     reader.openFile(argv[1];
+     reader.openFile(argv[1]);
 
     const auto e_cms = edm4hep::LorentzVectorE(0, 0, 0, 250.);
 
@@ -58,7 +58,7 @@ void zh_mumu_angle(int arg, char* argv[]){
                 TLorentzVector TZ_boson(Z_boson.Px(),Z_boson.Py(),Z_boson.Pz(),Z_boson.E());
 		TLorentzVector TH_boson(H_boson.Px(),H_boson.Py(),H_boson.Pz(),H_boson.E());
                 TLorentzVector Tmu1(mu1.Px(),mu1.Py(),mu1.Pz(),mu1.E());
-		TLorentzVector Te(e_cms.Px(),e_cms.Py(),e_cms.Pz(),e_cms.E())
+		TLorentzVector Te(e_cms.Px(),e_cms.Py(),e_cms.Pz(),e_cms.E());
 
                 TVector3 boostZ=-TZ_boson.BoostVector();
 		TVector3 boostH=-TH_boson.BoostVector();
