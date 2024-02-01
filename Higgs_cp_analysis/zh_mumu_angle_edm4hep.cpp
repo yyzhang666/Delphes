@@ -15,7 +15,7 @@
 #include <vector>
 #include<iostream>
 
-void zh_mumu_angle(int argc, char* argv[]){
+void zh_mumu_angle_edm4hep(int argc, char* argv[]){
 	if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <filename>\n";
         return ;
