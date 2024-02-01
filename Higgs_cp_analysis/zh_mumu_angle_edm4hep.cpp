@@ -29,7 +29,7 @@ void zh_mumu_angle_edm4hep(){
     const auto e_cms = edm4hep::LorentzVectorE(0, 0, 0, 250.);
 
     //book histograms
-    auto azimuthal= new TH1D("azimuthal_angle","Phi/rad",200, 0.0, 1.6);
+    auto azimuthal= new TH1D("azimuthal_angle","Phi/rad",100, 0.0, 1.6);
 	//auto pz= new TH1D("mu_Pz_Zrest","Pz",100,0.0,100);
 
     //Define 3d vector
