@@ -24,8 +24,8 @@ void zh_mumu_angle_edm4hep(){
     const auto e_cms = edm4hep::LorentzVectorE(0, 0, 0, 250.);
 
     //book histograms
-    auto azimuthal= new TH1D("azimuthal_angle","Phi/rad",100, 0.0, 3.2);
-	auto pz= new TH1D("mu_Pz_Zrest","Pz",100,0.0,100);
+    auto azimuthal= new TH1D("azimuthal_angle","Phi/rad",1000, 0.0, 1.6);
+	//auto pz= new TH1D("mu_Pz_Zrest","Pz",100,0.0,100);
 
     //Define 3d vector
     struct Vector3D {
@@ -68,19 +68,20 @@ void zh_mumu_angle_edm4hep(){
 		const auto angle_e=edm4hep::utils::angleAzimuthal(p_e);
 		const auto angle=angle_mu-angle_e;
                 azimuthal->Fill(angle);
-		pz->Fill(Tmu1.Pz());
+		//pz->Fill(Tmu1.Pz());
 
                         }
-                else {
-                    std::cout<<"No muons in this event!"<<std::endl;
-                }
+                //else {
+
+                    //std::cout<<"No muons in this event!"<<std::endl;
+                //}
     }
 	auto hist_file = new TFile("higgs_mu_azimuthal.root", "recreate");
 	azimuthal->Write();
 	hist_file->Close();
-	auto hist_file_2 = new TFile("mu_Pz_Zrest.root", "recreate");
-	pz->Write();
-	hist_file_2 ->Close();
+	//auto hist_file_2 = new TFile("mu_Pz_Zrest.root", "recreate");
+	//pz->Write();
+	//hist_file_2 ->Close();
   
                 
 }
