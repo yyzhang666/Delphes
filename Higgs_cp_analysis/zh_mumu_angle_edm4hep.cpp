@@ -15,16 +15,11 @@
 #include <vector>
 #include<iostream>
 
-void zh_mumu_angle_edm4hep(int argc, char* argv[]){
-	if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <filename>\n";
-        return ;
-    }
-
+void zh_mumu_angle_edm4hep(){
 
     //Read files
     auto reader = podio::ROOTFrameReader();
-     reader.openFile(argv[1]);
+     reader.openFile("delphes_events_edm4hep.root");
 
     const auto e_cms = edm4hep::LorentzVectorE(0, 0, 0, 250.);
 
