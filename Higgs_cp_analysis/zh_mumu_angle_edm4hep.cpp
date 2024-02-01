@@ -1,3 +1,8 @@
+/* This macros is for getting histogram of azimuthal angle between mu, which decayed from Z, and e beam in Higgs rest frame.
+   The data format is edm4hep
+   Note should change the file name in podio reader
+*/ 
+
 //include the packages to read the data with edm4hep format
 #include "edm4hep/ReconstructedParticleCollection.h"
 #include "edm4hep/utils/kinematics.h"
