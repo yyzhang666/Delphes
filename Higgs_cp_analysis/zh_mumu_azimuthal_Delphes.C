@@ -11,7 +11,7 @@ R__LOAD_LIBRARY(libDelphes)
 #include "TFile.h"
 #include "TMath.h"
 
-void zh_mumu_angle_delphes_transform(const char *inputFile) {
+void zh_mumu_azimuthal_Delphes(const char *inputFile) {
     gSystem->Load("libDelphes");
 
     TChain chain("Delphes");
